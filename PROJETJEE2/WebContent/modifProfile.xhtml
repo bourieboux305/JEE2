@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Hello page</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="singIn.css" />
+	<ui:include src="/template/header.xhtml" />
+
+	<div class="container">
+		<div class="row main">
+			<div class="main-login main-center">
+				<h:form>
+					<h2>Modification profile</h2>
+					<c:set var="user" value="#{userController.user}" />
+					<div class="form-group">
+							<label for="nom" class="cols-sm-2 control-label"><h:outputText value="Nom :" /></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<h:inputText id="nom" value="#{user.nom}" class="form-control" required="true"
+									requiredMessage="nom requis" validatorMessage="lettre uniquement">
+									<f:validateRegex pattern="[a-zA-Z| ]+" />
+									<f:ajax event="keyup" render="messageNom"/>
+									</h:inputText>
+								</div>
+							</div>
+							<h:messages id="messageNom" for="nom" style="color:red;margin:8px;" />
+						</div>
+						
+						<div class="form-group">
+							<label for="prenom" class="cols-sm-2 control-label"><h:outputText value="Prenom :" /></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<h:inputText id="prenom" value="#{user.prenom}" class="form-control" required="true"
+									requiredMessage="prenom requis" validatorMessage="lettre uniquement" >
+									<f:validateRegex pattern="[a-zA-Z| ]+" />
+									<f:ajax event="keyup" render="messagePrenom"/>
+									</h:inputText>
+								</div>
+							</div>
+							<h:messages id="messagePrenom" for="prenom" style="color:red;margin:8px;" />
+						</div>
+
+						<div class="form-group">
+							<label for="webSite" class="cols-sm-2 control-label"><h:outputText value="Site web :" /></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<h:inputText id="webSite" value="#{user.website}" class="form-control"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="dateNaiss" class="cols-sm-2 control-label"><h:outputText value="Date de naissance :" /></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<h:inputText id="dateNaiss" value="#{user.dateNaiss}" class="form-control" converterMessage="date invalide(format:dd/mm/yyyy)">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+										<f:ajax event="keyup" render="messageDateNaiss"/>
+									</h:inputText>
+								</div>
+							</div>
+							<h:messages id="messageDateNaiss" for="dateNaiss" style="color:red;margin:8px;" />
+						</div>
+
+					<div class="form-group ">
+						<h:commandButton action="#{userController.modifProfile()}" value="Modifier"
+							style="color:#666;" />
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+
+
+</h:body>
+</html>

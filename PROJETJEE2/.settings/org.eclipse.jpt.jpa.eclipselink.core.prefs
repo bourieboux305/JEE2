@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+staticWeaving.SOURCE=target/classes
+staticWeaving.TARGET=target/classes

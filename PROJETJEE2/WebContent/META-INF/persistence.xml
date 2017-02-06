@@ -1,0 +1,22 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+          http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	
+    <persistence-unit name="myData" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>myDataSource</jta-data-source>
+        <class>beans.Personne</class>
+        <class>beans.CV</class>
+        <class>beans.Activite</class>
+        <properties>
+            <property name="hibernate.show_sql"     value="true" />
+            <property name="hibernate.format_sql"   value="true" />
+            <property name="hibernate.dialect"      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+
+</persistence>

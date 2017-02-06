@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<div class="card">
+	<div class="container-fliud">
+		<div class="wrapper row">
+			<div class="preview col-md-6">
+
+				<div class="preview-pic tab-content">
+					<div class="tab-pane active" id="pic-1">
+						<img
+							src="http://santetotal.com/wp-content/uploads/2014/05/default-user.png" />
+					</div>
+				</div>
+
+			</div>
+			<div class="details col-md-6">
+				<h3 class="product-title">Mon profile</h3>
+				<h5 class="sizes">
+					Nom :
+					<h:outputText value="#{userController.user.nom}" />
+				</h5>
+				<h5 class="sizes">
+					Prenom :
+					<h:outputText value="#{userController.user.prenom}" />
+				</h5>
+				<h5 class="sizes">
+					E-mail :
+					<h:outputText value="#{userController.user.email}" />
+				</h5>
+				<h5 class="sizes">
+					site web :
+					<h:outputText value="#{userController.user.website}" />
+				</h5>
+				<h5 class="sizes">
+					Date de naissance :
+					<h:outputText value="#{userController.user.dateNaiss}" />
+				</h5>
+				<div class="action">
+					<h:link outcome="modifProfile" class="add-to-cart btn btn-default">
+						Modifier</h:link>
+					<span> </span>
+					<h:link outcome="ajouterActivite" class="add-to-cart btn btn-default">
+						ajouter une activitée</h:link>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

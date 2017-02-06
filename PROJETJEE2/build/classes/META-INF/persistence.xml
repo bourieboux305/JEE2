@@ -1,0 +1,26 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+          http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="myData">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>beans.Activite</class>
+		<class>beans.CV</class>
+		<class>beans.Personne</class>
+		<properties>
+			<property name="openjpa.jdbc.SynchronizeMappings"
+                value="buildSchema(ForeignKeys=true)" />
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver" />
+            <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost/JEE2"/>
+            <property name="openjpa.ConnectionUserName" value="root"/>
+            <property name="openjpa.ConnectionPassword" value="harijaona"/>
+			<property name="openjpa.DynamicEnhancementAgent" value="true" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
+			<property name="eclipselink.jdbc.cache-statements" value="false"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

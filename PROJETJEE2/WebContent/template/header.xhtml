@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:outputStylesheet library="css" name="header.css" />
+<div class="menu">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="#">Curicilum Vitae</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav navbar-right">
+
+				<c:if test="#{!userController.connected}">
+					<li><h:link outcome="registration" class="header">
+							<span class="glyphicon glyphicon-user"></span>
+							Sign in</h:link></li>
+					<li><h:link outcome="login" class="header">
+							<span class="glyphicon glyphicon-log-in"></span>
+							Login</h:link></li>
+				</c:if>
+				<c:if test="#{userController.connected}">
+
+					<li><h:form>
+							<h:commandLink action="#{userController.profile()}"
+								class="header">
+								<span class="glyphicon glyphicon-user"></span>
+							Bonjour <h:outputText value="#{userController.user.nom}" />
+							</h:commandLink>
+						</h:form></li>
+					<li><h:form>
+							<h:commandLink action="#{userController.logOut()}" class="header">
+								<span class="glyphicon glyphicon-log-out"></span>
+							Logout
+							</h:commandLink>
+						</h:form></li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
+</div>
+</html>

@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:outputStylesheet library="css" name="monProfile.css" />
+<ui:repeat var="personne" value="#{userController.listePersonne()}">
+	<div class="card" >
+		<div class="container-fluid">
+			<div class="wrapper row" >
+				<div class="preview col-md-6">
+					<div class="preview-pic tab-content">
+						<div class="tab-pane active" id="pic-1">
+							<img 
+								src="http://santetotal.com/wp-content/uploads/2014/05/default-user.png" />
+						</div>
+					</div>
+				</div>
+				<div class="details col-md-6">
+					<h5 class="sizes">
+						Nom :
+						<h:outputText value="#{personne.nom}" />
+					</h5>
+					<h5 class="sizes">
+						Prenom :
+						<h:outputText value="#{personne.prenom}" />
+					</h5>
+					<h5 class="sizes">
+						E-mail :
+						<h:outputText value="#{personne.email}" />
+					</h5>
+					<h5 class="sizes">
+						site web :
+						<h:outputText value="#{personne.website}" />
+					</h5>
+					<h5 class="sizes">
+						Date de naissance :
+						<h:outputText value="#{personne.dateNaiss}" />
+					</h5>
+					<div class="action">
+						<h:form>
+						<h:commandLink action="#{cvController.consultation(personne)}" class="add-to-cart btn btn-default">
+						consulter</h:commandLink>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</ui:repeat>
+</html>
